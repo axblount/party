@@ -1,0 +1,42 @@
+Hello, <%= @user.name %>!
+<br>
+
+<% if @user && @user.spotify? && @user.hosting.count > 0 %>
+  Hosting:
+  <ul>
+  <% @user.hosting.each do |p| %>
+    <li><a href="/party/<%= p.id %>"><%= p.name %></a></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<% if @user && @user.parties.count > 0 %>
+  Attending:
+  <ul>
+  <% @user.parties.each do |p| %>
+    <li><a href="/party/<%= p.id %>"><%= p.name %></a></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<% if @user && @user.spotify? %>
+  <form action="/party/start" method="POST">
+    <input type="text" name="name" placeholder="Party Name" class="smooth">
+    <select id="playlist-select" name="playlist_id" class="smooth"></select>
+    <input class="btn btn-b" type="submit">Start the party!!!</input>
+  </form>
+
+  <script>
+    $(function() {
+      var playlists = api.getUserPlaylists('<%= @user.id %>',
+        function (err, data) {
+          var options = data.items.map(function(p) {
+            return $('<option/>', {
+              value: p.id,
+              text: p.name });
+          });
+          $('#playlist-select').append(options);
+        });
+    });
+  </script>
+<% end %>

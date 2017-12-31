@@ -1,0 +1,14 @@
+.bad {
+  border-color: #e44;
+  background: #fdd;
+}
+
+.warn {
+  border-color: #dd2;
+  background: #ffd;
+}
+
+.good {
+  border-color: #2d2;
+  background: #dfd;
+}

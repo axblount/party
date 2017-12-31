@@ -1,0 +1,5 @@
+  <a href="/auth/spotify">Sign in with Spotify</a>
+  or <a href="/auth/guest">continue as a guest</a>.
+  <% unless settings.environment == :production %>
+    <a href="/auth/developer">dev</a>
+  <% end %>

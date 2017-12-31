@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'sinatra-flash'
+gem 'rspotify'
+gem 'sqlite3'
+gem 'sequel'
+gem 'omniauth'
+gem 'omniauth-spotify'

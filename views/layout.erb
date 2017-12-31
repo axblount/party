@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PARTY</title>
+
+  <link href="/css/min.css" rel="stylesheet" type="text/css">
+  <link href="/css/main.css" rel="stylesheet" type="text/css">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <% if @user && @user.spotify? %>
+    <script src="https://cdn.jsdelivr.net/npm/spotify-web-api-js"></script>
+    <script>
+      var api = new SpotifyWebApi();
+      api.setAccessToken('<%= @user.token %>');
+    </script>
+  <% end %>
+</head>
+<body>
+  <nav class="nav" tabindex="-1">
+    <div class="container">
+      <a class="pagename current" href="/">PARTY</a>
+    </div>
+  </nav>
+  <%= render_flash %>
+  <div class="container">
+    <%= yield %>
+    <div class="container footer">
+      <% if @user %>
+        <a href="/logout">logout</a>
+      <% end %>
+    </div>
+  </div>
+</body>
+</html>
